@@ -21,5 +21,5 @@ jobs:
         run: |
           curl -X GET \
             -H 'accept: application/json' \
-            -H 'X-N8N-API-KEY: ${{ secrets.N8N_API_KEY }} \
+            -H 'X-N8N-API-KEY: ${{ secrets.N8N_API_KEY }}' \
             https://n8n.jafner.tools/api/v1/workflows
