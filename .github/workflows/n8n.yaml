@@ -1,0 +1,25 @@
+name: n8n
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  n8n:
+    name: Get workflows from instance
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Get workflows
+        run: |
+          curl -X GET \
+            -H 'accept: application/json' \
+            -H 'X-N8N-API-KEY: ${{ secrets.N8N_API_KEY }} \
+            https://n8n.jafner.tools/api/v1/workflows
